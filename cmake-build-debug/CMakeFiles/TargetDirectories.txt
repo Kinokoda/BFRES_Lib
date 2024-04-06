@@ -1,0 +1,3 @@
+/home/kino/CLionProjects/BFRES-Lib/cmake-build-debug/CMakeFiles/BFRES_Lib.dir
+/home/kino/CLionProjects/BFRES-Lib/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/kino/CLionProjects/BFRES-Lib/cmake-build-debug/CMakeFiles/rebuild_cache.dir
