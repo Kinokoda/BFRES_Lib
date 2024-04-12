@@ -49,11 +49,11 @@ cmake_ninja_workdir = /home/kino/CLionProjects/BFRES-Lib/cmake-build-debug/
 
 build cmake_object_order_depends_target_BFRES_Lib: phony || CMakeFiles/BFRES_Lib.dir
 
-build CMakeFiles/BFRES_Lib.dir/BFRES.cpp.o: CXX_COMPILER__BFRES_Lib_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/BFRES.cpp || cmake_object_order_depends_target_BFRES_Lib
-  DEP_FILE = CMakeFiles/BFRES_Lib.dir/BFRES.cpp.o.d
+build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o: CXX_COMPILER__BFRES_Lib_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/BFRES/BFRES.cpp || cmake_object_order_depends_target_BFRES_Lib
+  DEP_FILE = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES
 
 
 # =============================================================================
@@ -63,13 +63,75 @@ build CMakeFiles/BFRES_Lib.dir/BFRES.cpp.o: CXX_COMPILER__BFRES_Lib_unscanned_De
 #############################################
 # Link the static library libBFRES_Lib.a
 
-build libBFRES_Lib.a: CXX_STATIC_LIBRARY_LINKER__BFRES_Lib_Debug CMakeFiles/BFRES_Lib.dir/BFRES.cpp.o
+build libBFRES_Lib.a: CXX_STATIC_LIBRARY_LINKER__BFRES_Lib_Debug CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
   POST_BUILD = :
   PRE_LINK = :
   TARGET_FILE = libBFRES_Lib.a
   TARGET_PDB = BFRES_Lib.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target fileOps
+
+
+#############################################
+# Order-only phony target for fileOps
+
+build cmake_object_order_depends_target_fileOps: phony || CMakeFiles/fileOps.dir
+
+build CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o: CXX_COMPILER__fileOps_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/usefulFunctions/fileOps.cpp || cmake_object_order_depends_target_fileOps
+  DEP_FILE = CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/fileOps.dir
+  OBJECT_FILE_DIR = CMakeFiles/fileOps.dir/libSrc/usefulFunctions
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target fileOps
+
+
+#############################################
+# Link the static library libfileOps.a
+
+build libfileOps.a: CXX_STATIC_LIBRARY_LINKER__fileOps_Debug CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/fileOps.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = libfileOps.a
+  TARGET_PDB = fileOps.a.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target BFRES_Lib_Test
+
+
+#############################################
+# Order-only phony target for BFRES_Lib_Test
+
+build cmake_object_order_depends_target_BFRES_Lib_Test: phony || CMakeFiles/BFRES_Lib_Test.dir
+
+build CMakeFiles/BFRES_Lib_Test.dir/testSrc/main.cpp.o: CXX_COMPILER__BFRES_Lib_Test_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/testSrc/main.cpp || cmake_object_order_depends_target_BFRES_Lib_Test
+  DEP_FILE = CMakeFiles/BFRES_Lib_Test.dir/testSrc/main.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/BFRES_Lib_Test.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib_Test.dir/testSrc
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target BFRES_Lib_Test
+
+
+#############################################
+# Link the executable BFRES_Lib_Test
+
+build BFRES_Lib_Test: CXX_EXECUTABLE_LINKER__BFRES_Lib_Test_Debug CMakeFiles/BFRES_Lib_Test.dir/testSrc/main.cpp.o
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/BFRES_Lib_Test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = BFRES_Lib_Test
+  TARGET_PDB = BFRES_Lib_Test.dbg
 
 
 #############################################
@@ -99,6 +161,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build BFRES_Lib: phony libBFRES_Lib.a
 
+build fileOps: phony libfileOps.a
+
 # =============================================================================
 # Folder targets.
 
@@ -107,7 +171,7 @@ build BFRES_Lib: phony libBFRES_Lib.a
 #############################################
 # Folder: /home/kino/CLionProjects/BFRES-Lib/cmake-build-debug
 
-build all: phony libBFRES_Lib.a
+build all: phony libBFRES_Lib.a libfileOps.a BFRES_Lib_Test
 
 # =============================================================================
 # Built-in targets
