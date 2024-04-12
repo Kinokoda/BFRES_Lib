@@ -72,7 +72,7 @@ build libBFRES_Lib.a: CXX_STATIC_LIBRARY_LINKER__BFRES_Lib_Debug CMakeFiles/BFRE
   TARGET_PDB = BFRES_Lib.a.dbg
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target fileOps
+# Object build statements for EXECUTABLE target fileOps
 
 
 #############################################
@@ -88,19 +88,19 @@ build CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o: CXX_COMPILER_
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target fileOps
+# Link build statements for EXECUTABLE target fileOps
 
 
 #############################################
-# Link the static library libfileOps.a
+# Link the executable fileOps
 
-build libfileOps.a: CXX_STATIC_LIBRARY_LINKER__fileOps_Debug CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o
-  LANGUAGE_COMPILE_FLAGS = -g
+build fileOps: CXX_EXECUTABLE_LINKER__fileOps_Debug CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles/fileOps.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = libfileOps.a
-  TARGET_PDB = fileOps.a.dbg
+  TARGET_FILE = fileOps
+  TARGET_PDB = fileOps.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target BFRES_Lib_Test
@@ -161,8 +161,6 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build BFRES_Lib: phony libBFRES_Lib.a
 
-build fileOps: phony libfileOps.a
-
 # =============================================================================
 # Folder targets.
 
@@ -171,7 +169,7 @@ build fileOps: phony libfileOps.a
 #############################################
 # Folder: /home/kino/CLionProjects/BFRES-Lib/cmake-build-debug
 
-build all: phony libBFRES_Lib.a libfileOps.a BFRES_Lib_Test
+build all: phony libBFRES_Lib.a fileOps BFRES_Lib_Test
 
 # =============================================================================
 # Built-in targets
