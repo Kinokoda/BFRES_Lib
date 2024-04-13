@@ -55,6 +55,12 @@ build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o: CXX_COMPILER__BFRES_Lib
   OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
   OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES
 
+build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o: CXX_COMPILER__BFRES_Lib_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/BFRES/subFRES/header/Header.cpp || cmake_object_order_depends_target_BFRES_Lib
+  DEP_FILE = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target BFRES_Lib
@@ -63,7 +69,7 @@ build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o: CXX_COMPILER__BFRES_Lib
 #############################################
 # Link the static library libBFRES_Lib.a
 
-build libBFRES_Lib.a: CXX_STATIC_LIBRARY_LINKER__BFRES_Lib_Debug CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o
+build libBFRES_Lib.a: CXX_STATIC_LIBRARY_LINKER__BFRES_Lib_Debug CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
   POST_BUILD = :

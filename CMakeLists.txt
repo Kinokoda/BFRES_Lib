@@ -5,7 +5,9 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_library(BFRES_Lib STATIC
         libSrc/BFRES/BFRES.cpp
-        libSrc/BFRES/BFRES.h)
+        libSrc/BFRES/BFRES.h
+        libSrc/BFRES/subFRES/header/Header.cpp
+        libSrc/BFRES/subFRES/header/Header.h)
 
 add_library(fileOps STATIC
         libSrc/usefulFunctions/fileOps.cpp

@@ -9,10 +9,25 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <array>
+
+using Bytes = std::vector<std::byte>;
 
 class fileOps {
-    public:
-    std::byte static * read(const std::string& filepath);
+private:
+    long length;
+    char * data;
+
+public:
+
+    explicit fileOps(const std::string& filePath);
+
+    void readFile(const std::string& filePath);
+
+    [[nodiscard]] const char * getData() const;
+
+    [[nodiscard]] long getLength() const;
+
 };
 
 

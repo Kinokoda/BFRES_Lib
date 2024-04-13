@@ -4,21 +4,29 @@
 
 #include "fileOps.h"
 
-std::byte * fileOps::read(const std::string& filepath){
-    std::ifstream resfile(filepath, std::ios::binary);
+fileOps::fileOps(const std::string& filePath) {
+    length = 0;
+    data = nullptr;
+    readFile(filePath);
+}
 
-    if (!resfile) {
-        throw std::runtime_error("Failed to open " + filepath + "\n");
+const char * fileOps::getData() const {
+    return data;
+}
+
+long fileOps::getLength() const {
+    return length;
+}
+
+void fileOps::readFile(const std::string& filePath) {
+    std::ifstream file("/home/kino/Downloads/Player00.bfres", std::ios::in|std::ios::binary|std::ios::ate);
+    if (file.is_open()){
+        long size = file.tellg();
+        length = size;
+        data = new char[size];
+        file.seekg(0, std::ios::beg);
+        file.read(data, size);
+        file.close();
+        //std::cout << "File Magic: " << data << std::endl;
     }
-
-    resfile.seekg(0, std::ifstream::end);
-    long length = resfile.tellg();
-    resfile.seekg(0, std::ifstream::end);
-
-    auto buffer = new std::byte[length];
-    std::cout << "Reading " << length << " characters... ";
-    resfile.read((char *)buffer, length);
-    std::cout << "all data read successfully.\n";
-
-    return buffer;
 }
