@@ -8,10 +8,11 @@
 #include <cstddef>
 #include <fstream>
 #include <vector>
+#include <iostream>
 
 class fileOps {
     public:
-    static std::vector<std::byte> readFileData(const std::string &path);
+    std::byte static * read(const std::string& filepath);
 };
 
 

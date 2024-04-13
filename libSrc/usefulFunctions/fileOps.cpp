@@ -4,20 +4,21 @@
 
 #include "fileOps.h"
 
-std::vector<std::byte> fileOps::readFileData(const std::string &name) {
-    std::ifstream inputFile(name, std::ios_base::binary);
+std::byte * fileOps::read(const std::string& filepath){
+    std::ifstream resfile(filepath, std::ios::binary);
 
-    // Determine the length of the file by seeking
-    // to the end of the file, reading the value of the
-    // position indicator, and then seeking back to the beginning.
-    inputFile.seekg(0, std::ios_base::end);
-    auto length = inputFile.tellg();
-    inputFile.seekg(0, std::ios_base::beg);
+    if (!resfile) {
+        throw std::runtime_error("Failed to open " + filepath + "\n");
+    }
 
-    // Make a buffer of the exact size of the file and read the data into it.
-    std::vector<std::byte> buffer(length);
-    inputFile.read(reinterpret_cast<char*>(buffer.data()), length);
+    resfile.seekg(0, std::ifstream::end);
+    long length = resfile.tellg();
+    resfile.seekg(0, std::ifstream::end);
 
-    inputFile.close();
+    auto buffer = new std::byte[length];
+    std::cout << "Reading " << length << " characters... ";
+    resfile.read((char *)buffer, length);
+    std::cout << "all data read successfully.\n";
+
     return buffer;
 }

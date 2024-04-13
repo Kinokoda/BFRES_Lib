@@ -5,6 +5,7 @@
 #include "main.h"
 
 int main(){
-    std::vector<std::byte> hell = fileOps::readFileData("Player00.bfres");
+    std::byte* fileData = fileOps::read("/home/kino/Downloads/Player00.bfres");
+    std::cout << "File data: " << fileData << std::endl;
     return 0;
 }

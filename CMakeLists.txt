@@ -14,3 +14,5 @@ add_library(fileOps STATIC
 add_executable(BFRES_Lib_Test
         testSrc/main.h
         testSrc/main.cpp)
+target_link_libraries(BFRES_Lib_Test BFRES_Lib)
+target_link_libraries(BFRES_Lib_Test fileOps)
