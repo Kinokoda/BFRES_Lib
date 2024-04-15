@@ -5,14 +5,11 @@
 
 #include "main.h"
 
+
 int main(){
-    fileOps file("/home/kino/Downloads/Player00.bfres");
+    fileOps file("/home/kino/Downloads/Clt_SDODR000_M.bfres");
     auto data = file.getData();
-
-    std::cout << (uint8_t) data[0x0C] - 0 << std::endl;
-
-    //Header header((std::byte *) data);
-
+    BFRES resFile(data);
 
     return 0;
 }

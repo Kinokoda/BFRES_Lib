@@ -19,7 +19,10 @@ long fileOps::getLength() const {
 }
 
 void fileOps::readFile(const std::string& filePath) {
-    std::ifstream file("/home/kino/Downloads/Player00.bfres", std::ios::in|std::ios::binary|std::ios::ate);
+    std::ifstream file(filePath, std::ios::in|std::ios::binary|std::ios::ate);
+    if (!file){
+        throw std::runtime_error("Error reading file");
+    }
     if (file.is_open()){
         long size = file.tellg();
         length = size;

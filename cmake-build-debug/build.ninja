@@ -49,14 +49,26 @@ cmake_ninja_workdir = /home/kino/CLionProjects/BFRES-Lib/cmake-build-debug/
 
 build cmake_object_order_depends_target_BFRES_Lib: phony || CMakeFiles/BFRES_Lib.dir
 
+build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o: CXX_COMPILER__BFRES_Lib_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/BFRES/subFRES/header/Header.cpp || cmake_object_order_depends_target_BFRES_Lib
+  DEP_FILE = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header
+
 build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o: CXX_COMPILER__BFRES_Lib_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/BFRES/BFRES.cpp || cmake_object_order_depends_target_BFRES_Lib
   DEP_FILE = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
   OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES
 
-build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o: CXX_COMPILER__BFRES_Lib_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/BFRES/subFRES/header/Header.cpp || cmake_object_order_depends_target_BFRES_Lib
-  DEP_FILE = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o.d
+build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/ModernHeader.cpp.o: CXX_COMPILER__BFRES_Lib_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/BFRES/subFRES/header/ModernHeader.cpp || cmake_object_order_depends_target_BFRES_Lib
+  DEP_FILE = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/ModernHeader.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header
+
+build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/LegacyHeader.cpp.o: CXX_COMPILER__BFRES_Lib_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/BFRES/subFRES/header/LegacyHeader.cpp || cmake_object_order_depends_target_BFRES_Lib
+  DEP_FILE = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/LegacyHeader.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
   OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header
@@ -69,7 +81,7 @@ build CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o: CXX_COM
 #############################################
 # Link the static library libBFRES_Lib.a
 
-build libBFRES_Lib.a: CXX_STATIC_LIBRARY_LINKER__BFRES_Lib_Debug CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o
+build libBFRES_Lib.a: CXX_STATIC_LIBRARY_LINKER__BFRES_Lib_Debug CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/Header.cpp.o CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/BFRES.cpp.o CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/ModernHeader.cpp.o CMakeFiles/BFRES_Lib.dir/libSrc/BFRES/subFRES/header/LegacyHeader.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/BFRES_Lib.dir
   POST_BUILD = :
@@ -92,6 +104,12 @@ build CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o: CXX_COMPILER_
   OBJECT_DIR = CMakeFiles/fileOps.dir
   OBJECT_FILE_DIR = CMakeFiles/fileOps.dir/libSrc/usefulFunctions
 
+build CMakeFiles/fileOps.dir/libSrc/usefulFunctions/UintReader.cpp.o: CXX_COMPILER__fileOps_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/usefulFunctions/UintReader.cpp || cmake_object_order_depends_target_fileOps
+  DEP_FILE = CMakeFiles/fileOps.dir/libSrc/usefulFunctions/UintReader.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/fileOps.dir
+  OBJECT_FILE_DIR = CMakeFiles/fileOps.dir/libSrc/usefulFunctions
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target fileOps
@@ -100,7 +118,7 @@ build CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o: CXX_COMPILER_
 #############################################
 # Link the static library libfileOps.a
 
-build libfileOps.a: CXX_STATIC_LIBRARY_LINKER__fileOps_Debug CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o
+build libfileOps.a: CXX_STATIC_LIBRARY_LINKER__fileOps_Debug CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o CMakeFiles/fileOps.dir/libSrc/usefulFunctions/UintReader.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/fileOps.dir
   POST_BUILD = :

@@ -4,8 +4,11 @@
 
 #ifndef BFRES_LIB_MAIN_H
 #define BFRES_LIB_MAIN_H
-#include "../libSrc/BFRES/BFRES.h"
-#include "../libSrc/usefulFunctions/fileOps.h"
+
 #include <netinet/in.h>
+#include "../libSrc/usefulFunctions/fileOps.h"
+#include "../libSrc/usefulFunctions/UintReader.h"
+#include "../libSrc/BFRES/subFRES/header/Header.h"
+#include "../libSrc/BFRES/BFRES.h"
 
 #endif //BFRES_LIB_MAIN_H
