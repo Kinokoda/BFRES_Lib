@@ -1,0 +1,3 @@
+# BFRES_Lib
+
+BFRES files were made by Nintendo for containing Models, Animations, Textures and a few more things. You can take the models out by using Switch Toolbox, but it's only available for Windows. You could write an app to perform the export with the BFRES library made by KillzXGaming, but you would have to install .NET, and I dont want to depend on runtimes. So I will write a library for reading BFRES files (no writing, I dont care) in C++, and IF I survive, I will try to write a lib for converting the models to FBX. And if I survive THAT, I will smash this project into a blender plugin(or maybe I will add it into blender itself...).
