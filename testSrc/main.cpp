@@ -7,9 +7,10 @@
 
 
 int main(){
-    fileOps file("/home/kino/Downloads/Clt_SDODR000_M.bfres");
-    auto data = file.getData();
-    BFRES resFile(data);
 
+
+    /*fileOps file("/home/kino/Downloads/Clt_SDODR000_M.bfres");
+    auto data = file.getData();
+    BFRES resFile(data);*/
     return 0;
 }

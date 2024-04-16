@@ -8,7 +8,7 @@
 #include <netinet/in.h>
 #include "../libSrc/usefulFunctions/fileOps.h"
 #include "../libSrc/usefulFunctions/UintReader.h"
-#include "../libSrc/BFRES/subFRES/header/Header.h"
-#include "../libSrc/BFRES/BFRES.h"
+/*#include "../libSrc/BFRES/subFRES/header/Header.h"
+#include "../libSrc/BFRES/BFRES.h"*/
 
 #endif //BFRES_LIB_MAIN_H
