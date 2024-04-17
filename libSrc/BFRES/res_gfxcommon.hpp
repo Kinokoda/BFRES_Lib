@@ -1,17 +1,19 @@
 #pragma once
 
+#include <cstdint>
+
 namespace vp::res {
 
     struct ResBntx;
 
     struct GfxBindTextureReturn {
-        u64   texture_view_decriptor_slot;
+        uint64_t   texture_view_decriptor_slot;
         void *texture_view;
     };
 
     using GfxBindTextureCallback = GfxBindTextureReturn (*) (ResBntx*, const char *);
 
-    enum class GfxMemoryPoolFlags : u32 {
+    enum class GfxMemoryPoolFlags : uint32_t {
         CpuNoAccess  = (1 << 0),
         CpuUncached  = (1 << 1),
         CpuCached    = (1 << 2),
@@ -24,7 +26,7 @@ namespace vp::res {
         Virtual      = (1 << 9),
     };
 
-    enum class GfxGpuAccessFlags : u32 {
+    enum class GfxGpuAccessFlags : uint32_t {
         VertexBuffer        = (1 << 2),
         IndexBuffer         = (1 << 3),
         UniformBuffer       = (1 << 4),
@@ -38,21 +40,21 @@ namespace vp::res {
     };
 
     struct ResGfxMemoryPoolInfo {
-        u32   memory_pool_flags;
-        u32   size;
+        uint32_t   memory_pool_flags;
+        uint32_t   size;
         void *storage;
     };
     static_assert(sizeof(ResGfxMemoryPoolInfo) == 0x10);
 
     struct ResGfxBufferInfo {
-        u32 size;
-        u32 gpu_access_flags;
-        u32 reserve0;
-        u32 reserve1;
+        uint32_t size;
+        uint32_t gpu_access_flags;
+        uint32_t reserve0;
+        uint32_t reserve1;
     };
     static_assert(sizeof(ResGfxBufferInfo) == 0x10);
 
-    enum class GfxChannelSource : u8 {
+    enum class GfxChannelSource : uint8_t {
         Zero  = 0x0,
         One   = 0x1,
         Red   = 0x2,
@@ -61,7 +63,7 @@ namespace vp::res {
         Alpha = 0x5
     };
 
-    enum class GfxChannelFormat : u8 {
+    enum class GfxChannelFormat : uint8_t {
         None         = 0x1,
         R8           = 0x2,
         R4G4B4A4     = 0x3,
@@ -108,14 +110,14 @@ namespace vp::res {
         B5G5R5A1     = 0x3b,
     };
 
-    static constexpr inline u32 VariableBlockWidthTable[] = {
+    static constexpr inline uint32_t VariableBlockWidthTable[] = {
         0x10, 0x08, 0x10, 0x08,
         0x08, 0x04, 0x04, 0x05,
         0x05, 0x06, 0x06, 0x08,
         0x08, 0x08, 0x0a, 0x0a,
         0x0a, 0x0a, 0x0c, 0x0c,
     };
-    static constexpr inline u32 VariableBlockHeightTable[] = {
+    static constexpr inline uint32_t VariableBlockHeightTable[] = {
         0x08, 0x08, 0x08, 0x08,
         0x04, 0x04, 0x04, 0x04,
         0x05, 0x05, 0x06, 0x05,
@@ -123,7 +125,7 @@ namespace vp::res {
         0x08, 0x0a, 0x0a, 0x0c,
     };
 
-    static constexpr inline u32 PackagedTextureTexelSizeTable[] = {
+    static constexpr inline uint32_t PackagedTextureTexelSizeTable[] = {
         0x08, 0x10, 0x10, 0x08,
         0x10, 0x10, 0x10, 0x08,
         0x10, 0x08, 0x08, 0x08,
@@ -135,15 +137,15 @@ namespace vp::res {
         0x10, 0x02
     };
 
-    constexpr ALWAYS_INLINE u32 CalculateGfxImageSize(GfxChannelFormat channel_format, u32 width, u32 height, u32 depth) {
-        u32 format = static_cast<u32>(channel_format);
+    constexpr inline uint32_t CalculateGfxImageSize(GfxChannelFormat channel_format, uint32_t width, uint32_t height, uint32_t depth) {
+        uint32_t format = static_cast<uint32_t>(channel_format);
 
         /* Adjust width and height for compressed formats */
-        u32 package_format = format - 0x1a;
+        uint32_t package_format = format - 0x1a;
         if (package_format < 0x21) {
-            u32 variable_format = format - 0x27;
-            u32 block_width     = 4;
-            u32 block_height    = 4;
+            uint32_t variable_format = format - 0x27;
+            uint32_t block_width     = 4;
+            uint32_t block_height    = 4;
             if (variable_format < 0x14) {
                 block_width  = VariableBlockWidthTable[variable_format];
                 block_height = VariableBlockHeightTable[variable_format];
@@ -154,7 +156,7 @@ namespace vp::res {
         }
 
         /* Find texel size */
-        u32 texel_size = 0;
+        uint32_t texel_size = 0;
         if (package_format < 0x22) {
             texel_size = PackagedTextureTexelSizeTable[package_format];
         } else if (format < 0x3) {
@@ -176,7 +178,7 @@ namespace vp::res {
         return texel_size * width * height * depth;
     }
 
-    enum class GfxTypeFormat : u8 {
+    enum class GfxTypeFormat : uint8_t {
         Unorm   = 0x1,
         Snorm   = 0x2,
         UInt    = 0x3,
@@ -190,9 +192,9 @@ namespace vp::res {
     };
 
     #define GFX_MAKE_IMAGE_FORMAT(channel_format, type_format) \
-        (((static_cast<u32>(channel_format) & 0xFF) << 8) | (static_cast<u32>(type_format) & 0xFF))
+        (((static_cast<uint32_t>(channel_format) & 0xFF) << 8) | (static_cast<uint32_t>(type_format) & 0xFF))
 
-    enum class GfxImageFormat : u32 {
+    enum class GfxImageFormat : uint32_t {
         R8_Unorm              = GFX_MAKE_IMAGE_FORMAT(GfxChannelFormat::R8,           GfxTypeFormat::Unorm),
         R8_Snorm              = GFX_MAKE_IMAGE_FORMAT(GfxChannelFormat::R8,           GfxTypeFormat::Snorm),
         R8_UInt               = GFX_MAKE_IMAGE_FORMAT(GfxChannelFormat::R8,           GfxTypeFormat::UInt),
@@ -293,7 +295,7 @@ namespace vp::res {
         B5G5R5A1_Unorm        = GFX_MAKE_IMAGE_FORMAT(GfxChannelFormat::B5G5R5A1,     GfxTypeFormat::Unorm)
     };
 
-    enum class GfxAttributeFormat : u32 {
+    enum class GfxAttributeFormat : uint32_t {
         None_Unorm           = GFX_MAKE_IMAGE_FORMAT(GfxChannelFormat::None,         GfxTypeFormat::Unorm),
         R8_Unorm             = GFX_MAKE_IMAGE_FORMAT(GfxChannelFormat::R8,           GfxTypeFormat::Unorm),
         R8_Snorm             = GFX_MAKE_IMAGE_FORMAT(GfxChannelFormat::R8,           GfxTypeFormat::Snorm),
@@ -352,7 +354,7 @@ namespace vp::res {
         R32G32B32A32_Float   = GFX_MAKE_IMAGE_FORMAT(GfxChannelFormat::R32G32B32A32,  GfxTypeFormat::Float),
     };
 
-    enum class GfxImageStorageDimension : u8 { 
+    enum class GfxImageStorageDimension : uint8_t { 
         Type1D = 1,
         Type2D = 2,
         Type3D = 3
@@ -360,31 +362,31 @@ namespace vp::res {
 
     struct ResGfxTextureInfo {
         union {
-            u8 texture_flags;
+            uint8_t texture_flags;
             struct {
-                u8  is_packaged         : 1;
-                u8  is_sparse_binding   : 1;
-                u8  is_sparse           : 1;
-                u8  is_res_texture      : 1;
-                u8  reserve0            : 4;
+                uint8_t  is_packaged         : 1;
+                uint8_t  is_sparse_binding   : 1;
+                uint8_t  is_sparse           : 1;
+                uint8_t  is_res_texture      : 1;
+                uint8_t  reserve0            : 4;
             };
         };
-        u8  storage_dimension;
-        u16 tile_mode;
-        u16 swizzle;
-        u16 mip_levels;
-        u16 sample_count;
-        u16 reserve1;
-        u32 image_format;
-        u32 gpu_access_flags;
-        u32 width;
-        u32 height;
-        u32 depth;
-        u32 array_layers;
-        u32 packaged_texture_layout;
+        uint8_t  storage_dimension;
+        uint16_t tile_mode;
+        uint16_t swizzle;
+        uint16_t mip_levels;
+        uint16_t sample_count;
+        uint16_t reserve1;
+        uint32_t image_format;
+        uint32_t gpu_access_flags;
+        uint32_t width;
+        uint32_t height;
+        uint32_t depth;
+        uint32_t array_layers;
+        uint32_t packaged_texture_layout;
 
         constexpr void SetDefaults() {
-            storage_dimension = static_cast<u8>(GfxImageStorageDimension::Type2D);
+            storage_dimension = static_cast<uint8_t>(GfxImageStorageDimension::Type2D);
             tile_mode         = 0;
             swizzle           = 0;
             mip_levels        = 1;
@@ -399,7 +401,7 @@ namespace vp::res {
     };
     static_assert(sizeof(ResGfxTextureInfo) == 0x28);
 
-    enum class GfxImageDimension : u8 {
+    enum class GfxImageDimension : uint8_t {
         Type1D                  = 0,
         Type2D                  = 1,
         Type3D                  = 2,
@@ -412,7 +414,7 @@ namespace vp::res {
         TypeRectangle           = 9
     };
 
-    enum class GfxTextureSwizzle : u8 {
+    enum class GfxTextureSwizzle : uint8_t {
         Zero = 0,
         One  = 1,
         R    = 2,
@@ -421,34 +423,34 @@ namespace vp::res {
         A    = 5,
     };
 
-    enum class GfxTextureDepthStencilMode : u8 {
+    enum class GfxTextureDepthStencilMode : uint8_t {
         Depth   = 0,
         Stencil = 1
     };
 
     template <typename T>
-        requires (sizeof(T*) == sizeof(u64))
+        requires (sizeof(T*) == sizeof(uint64_t))
     struct ResGfxTextureViewInfo {
-        u8   image_dimension;
-        u8   depth_stencil_mode;
-        u16  reserve0;
-        u32  image_format;
-        u8   swizzle_x;
-        u8   swizzle_y;
-        u8   swizzle_z;
-        u8   swizzle_w;
-        u32  reserve1;
-        u16  base_mip_level;
-        u16  mip_levels;
-        u32  reserve2[3];
-        u32  base_array_layer;
-        u32  array_layers;
-        u32  reserve3[2];
+        uint8_t   image_dimension;
+        uint8_t   depth_stencil_mode;
+        uint16_t  reserve0;
+        uint32_t  image_format;
+        uint8_t   swizzle_x;
+        uint8_t   swizzle_y;
+        uint8_t   swizzle_z;
+        uint8_t   swizzle_w;
+        uint32_t  reserve1;
+        uint16_t  base_mip_level;
+        uint16_t  mip_levels;
+        uint32_t  reserve2[3];
+        uint32_t  base_array_layer;
+        uint32_t  array_layers;
+        uint32_t  reserve3[2];
         T   *texture;
     };
     static_assert(sizeof(ResGfxTextureViewInfo<void*>) == 0x38);
 
-    enum class GfxWrapMode : u8 {
+    enum class GfxWrapMode : uint8_t {
         Repeat            = 0,
         MirrorRepeat      = 1,
         ClampToEdge       = 2,
@@ -456,7 +458,7 @@ namespace vp::res {
         MirrorClampToEdge = 4
     };
     
-    enum class GfxCompareOperation : u8 {
+    enum class GfxCompareOperation : uint8_t {
         Never            = 0,
         LessThan         = 1,
         Equal            = 2,
@@ -467,56 +469,56 @@ namespace vp::res {
         Always           = 7
     };
 
-    enum class GfxBorderColor : u8 {
+    enum class GfxBorderColor : uint8_t {
         White            = 0,
         TransparentBlack = 1,
         Black            = 2,
     };
 
-    enum class GfxMipMapFilter : u8 {
+    enum class GfxMipMapFilter : uint8_t {
         None    = 0,
         Nearest = 1,
         Linear  = 2
     };
 
-    enum class GfxMinFilter : u8 {
+    enum class GfxMinFilter : uint8_t {
         Invalid = 0,
         Nearest = 1,
         Linear  = 2
     };
 
-    enum class GfxMagFilter : u8 {
+    enum class GfxMagFilter : uint8_t {
         Invalid = 0,
         Nearest = 1,
         Linear  = 2
     };
 
-    enum GfxReductionFilter : u8 {
+    enum GfxReductionFilter : uint8_t {
         Average = 0,
         Min     = 1,
         Max     = 2
     };
 
     struct ResGfxSamplerInfo {
-        u8    wrap_mode_u;
-        u8    wrap_mode_v;
-        u8    wrap_mode_w;
-        u8    compare_op;
-        u8    border_color;
-        u8    max_anisotropy;
-        u16   mip_map_filter    : 2;
-        u16   mag_filter        : 2;
-        u16   min_filter        : 2;
-        u16   enable_anisotropy : 1;
-        u16   enable_compare_op : 1;
-        u16   reduction_filter  : 2;
-        u16   reserve0          : 6;
+        uint8_t    wrap_mode_u;
+        uint8_t    wrap_mode_v;
+        uint8_t    wrap_mode_w;
+        uint8_t    compare_op;
+        uint8_t    border_color;
+        uint8_t    max_anisotropy;
+        uint16_t   mip_map_filter    : 2;
+        uint16_t   mag_filter        : 2;
+        uint16_t   min_filter        : 2;
+        uint16_t   enable_anisotropy : 1;
+        uint16_t   enable_compare_op : 1;
+        uint16_t   reduction_filter  : 2;
+        uint16_t   reserve0          : 6;
         float lod_clamp_min;
         float lod_clamp_max;
         float lod_bias;
-        u32   reserve1;
-        u32   reserve2;
-        u32   reserve3;
+        uint32_t   reserve1;
+        uint32_t   reserve2;
+        uint32_t   reserve3;
     };
     static_assert(sizeof(ResGfxSamplerInfo) == 0x20);
 
@@ -561,7 +563,7 @@ namespace vp::res {
         DecrementWrap = 7
     };
 
-    enum class GfxBlendFactor : u8 {
+    enum class GfxBlendFactor : uint8_t {
         Zero                     = 0,
         One                      = 1,
         SourceColor              = 2,
@@ -583,7 +585,7 @@ namespace vp::res {
         SourceOneAlphaMinusOne   = 18
     };
 
-    enum class GfxBlendEquation : u8 {
+    enum class GfxBlendEquation : uint8_t {
         Add        = 0,
         Sub        = 1,
         ReverseSub = 2,
@@ -591,7 +593,7 @@ namespace vp::res {
         Max        = 4
     };
 
-    enum class GfxLogicOperation : u8 {
+    enum class GfxLogicOperation : uint8_t {
         Clear        = 0,
         And          = 1,
         AndReverse   = 2,
@@ -610,31 +612,31 @@ namespace vp::res {
         Set          = 15
     };
 
-    enum class GfxCullMode : u8 {
+    enum class GfxCullMode : uint8_t {
         None         = 0x0,
         Front        = 0x1,
         Back         = 0x2,
     };
 
-    enum class GfxFillMode : u8 {
+    enum class GfxFillMode : uint8_t {
         Point = 0,
         Line  = 1,
         Fill  = 2,
     };
     
-    enum class GfxFrontFace : u8 {
+    enum class GfxFrontFace : uint8_t {
         CounterClockWise = 0x0,
         ClockWise        = 0x1,
     };
 
     struct ResGfxEmbedFile {
         void *file_offset;
-        u32   file_size;
-        u32   reserve0;
+        uint32_t   file_size;
+        uint32_t   reserve0;
     };
     static_assert(sizeof(ResGfxEmbedFile) == 0x10);
 
-    enum class GfxUserDataType : u8 {
+    enum class GfxUserDataType : uint8_t {
         S32    = 0,
         Float  = 1,
         String = 2,
@@ -644,9 +646,9 @@ namespace vp::res {
     struct ResGfxUserData {
         const char *user_data_name;
         void       *user_data;
-        s32         data_entries;
-        u8          data_type;
-        u8          reserve0[0x2b];
+        int32_t       data_entries;
+        uint8_t          data_type;
+        uint8_t          reserve0[0x2b];
     };
     static_assert(sizeof(ResGfxUserData) == 0x40);
 }

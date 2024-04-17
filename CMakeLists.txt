@@ -4,16 +4,6 @@ project(BFRES_Lib VERSION 1.0)
 set(CMAKE_CXX_STANDARD 20)
 
 add_library(BFRES_Lib STATIC
-        #libSrc/BFRES/BFRES.cpp
-        #libSrc/BFRES/BFRES.h
-        #libSrc/BFRES/subFRES/header/Header.cpp
-        #libSrc/BFRES/subFRES/header/Header.h
-        #libSrc/BFRES/subFRES/header/ModernHeader.cpp
-        #libSrc/BFRES/subFRES/header/ModernHeader.h
-        #libSrc/BFRES/subFRES/header/LegacyHeader.cpp
-        #libSrc/BFRES/subFRES/header/LegacyHeader.h
-        #libSrc/BFRES/subFRES/FMDL/FMDL.cpp
-        #libSrc/BFRES/subFRES/FMDL/FMDL.h
         libSrc/BFRES/res_bfres.hpp
         libSrc/BFRES/res_bfresanimcurve.hpp
         libSrc/BFRES/res_bfresbonevisibilityanim.hpp
@@ -32,6 +22,18 @@ add_library(BFRES_Lib STATIC
         libSrc/BFRES/res_nintendowarerelocationtable.cpp
         libSrc/BFRES/res_nintendowarerelocationtable.h
         libSrc/BFRES/res_nintendowarestringpool.hpp
+        libSrc/usefulFunctions/usefulStructs.h
+        #libSrc/BFRES/BFRES.cpp
+        #libSrc/BFRES/BFRES.h
+        #libSrc/BFRES/subFRES/header/Header.cpp
+        #libSrc/BFRES/subFRES/header/Header.h
+        #libSrc/BFRES/subFRES/header/ModernHeader.cpp
+        #libSrc/BFRES/subFRES/header/ModernHeader.h
+        #libSrc/BFRES/subFRES/header/LegacyHeader.cpp
+        #libSrc/BFRES/subFRES/header/LegacyHeader.h
+        #libSrc/BFRES/subFRES/FMDL/FMDL.cpp
+        #libSrc/BFRES/subFRES/FMDL/FMDL.h
+
 )
 
 #add_library(fileOps STATIC

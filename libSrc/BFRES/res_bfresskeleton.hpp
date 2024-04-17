@@ -1,5 +1,10 @@
 #pragma once
 
+#include <cstdint>
+#include "res_gfxcommon.hpp"
+#include "res_nintendowaredictionary.hpp"
+#include "../usefulFunctions/usefulStructs.h"
+
 namespace vp::res {
 
     enum class BfresBoneBillboardMode {
@@ -12,7 +17,7 @@ namespace vp::res {
         YAxisViewVector,
         YAxisViewPoint,
     };
-    enum class BfresBoneLocalTransformMode : u8 {
+    enum class BfresBoneLocalTransformMode : uint8_t {
         None                    = (1 << 0),
         SegmentScaleCompensate  = (1 << 1),
         ScaleUniform            = (1 << 2),
@@ -33,21 +38,21 @@ namespace vp::res {
         ResGfxUserData            *user_data_array;
         ResNintendoWareDictionary *user_data_dictionary;
         void                      *reserve0;
-        u16                        bone_index;
-        u16                        bone_parent_index;
-        u16                        smooth_bone_index;
-        u16                        rigid_bone_index;
-        u16                        billboard_index;
-        u16                        user_data_count;
-        u32                        reserve1                 : 8;
-        u32                        unknown0                 : 4;
-        u32                        is_bone_visible          : 1;
-        u32                        unknown1                 : 3;
-        u32                        billboard_mode           : 3;
-        u32                        reserve3                 : 1;
-        u32                        unknown2                 : 3;
-        u32                        local_transform_mode     : 5;
-        u32                        hierarchy_transform_mode : 4;
+        uint16_t                        bone_index;
+        uint16_t                        bone_parent_index;
+        uint16_t                        smooth_bone_index;
+        uint16_t                        rigid_bone_index;
+        uint16_t                        billboard_index;
+        uint16_t                        user_data_count;
+        uint32_t                        reserve1                 : 8;
+        uint32_t                        unknown0                 : 4;
+        uint32_t                        is_bone_visible          : 1;
+        uint32_t                        unknown1                 : 3;
+        uint32_t                        billboard_mode           : 3;
+        uint32_t                        reserve3                 : 1;
+        uint32_t                        unknown2                 : 3;
+        uint32_t                        local_transform_mode     : 5;
+        uint32_t                        hierarchy_transform_mode : 4;
         util::Vector3f             translate;
         util::Vector4f             rotate;
         util::Vector3f             scale;
@@ -71,25 +76,25 @@ namespace vp::res {
     };
 
     struct ResBfresSkeleton {
-        u32                        magic;
-        u32                        has_user_pointer : 2;
-        u32                        reserve0         : 4;
-        u32                        mirror_mode      : 2;
-        u32                        scale_mode       : 2;
-        u32                        reserve1         : 2;
-        u32                        rotation_mode    : 2;
+        uint32_t                        magic;
+        uint32_t                        has_user_pointer : 2;
+        uint32_t                        reserve0         : 4;
+        uint32_t                        mirror_mode      : 2;
+        uint32_t                        scale_mode       : 2;
+        uint32_t                        reserve1         : 2;
+        uint32_t                        rotation_mode    : 2;
         ResNintendoWareDictionary *bone_dictionary;
         ResBfresBone              *bone_array;
-        u16                       *bone_index_table;
+        uint16_t                       *bone_index_table;
         util::Matrix34f           *inverse_transformation_matrix_array;
         void                      *user_pointer;
-        u16                       *mirrored_bone_index_table;
-        u16                        bone_count;
-        u16                        smooth_bone_count;
-        u16                        rigid_bone_count;
-        u16                        reserve2;
+        uint16_t                       *mirrored_bone_index_table;
+        uint16_t                        bone_count;
+        uint16_t                        smooth_bone_count;
+        uint16_t                        rigid_bone_count;
+        uint16_t                        reserve2;
         
-        static constexpr u32 cMagic = util::TCharCode32("FSKL");
+        static constexpr uint32_t cMagic = 0x46534B4C;
     };
     static_assert(sizeof(ResBfresSkeleton) == 0x40);
 }

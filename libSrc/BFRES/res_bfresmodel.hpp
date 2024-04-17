@@ -1,10 +1,23 @@
 #pragma once
 
+#include "res_nintendowaredictionary.hpp"
+#include "res_bfresskeletalanim.hpp"
+#include "res_bfresmaterialanim.hpp"
+#include "res_bfresbonevisibilityanim.hpp"
+#include "res_bfresshapeanim.hpp"
+#include "res_nintendowarefileheader.hpp"
+#include "res_gfxcommon.hpp"
+#include "res_bfressceneanim.hpp"
+#include "res_bfresskeleton.hpp"
+#include "res_bfresshape.hpp"
+#include "res_bfresmaterial.hpp"
+
+
 namespace vp::res {
 
     struct ResBfresModel {
-        u32                        magic;
-        u32                        reserve0;
+        uint32_t                        magic;
+        uint32_t                        reserve0;
         const char                *model_name;
         const char                *reserve1;
         ResBfresSkeleton          *skeleton;
@@ -17,19 +30,19 @@ namespace vp::res {
         ResGfxUserData            *user_data_array;
         ResNintendoWareDictionary *user_data_dictionary;
         void                      *user_pointer;
-        u16                        vertex_count;
-        u16                        shape_count;
-        u16                        material_count;
-        u16                        shader_reflection_count;
-        u16                        user_data_count;
-        u16                        reserve2;
-        u32                        reserve3;
+        uint16_t                        vertex_count;
+        uint16_t                        shape_count;
+        uint16_t                        material_count;
+        uint16_t                        shader_reflection_count;
+        uint16_t                        user_data_count;
+        uint16_t                        reserve2;
+        uint32_t                        reserve3;
 
-        static constexpr u32 cMagic = util::TCharCode32("FMDL");
+        static constexpr uint32_t cMagic = 0x464D444C;
 
         void BindTexture(GfxBindTextureCallback bind_callback, ResBntx *res_bntx) {
-            const u32 mat_count = material_count;
-            for (u32 i = 0; i < mat_count; ++i) {
+            const uint32_t mat_count = material_count;
+            for (uint32_t i = 0; i < mat_count; ++i) {
                 material_array[i].BindTexture(bind_callback, res_bntx);
             }
         }

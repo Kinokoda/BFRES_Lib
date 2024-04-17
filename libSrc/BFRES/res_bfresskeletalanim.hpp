@@ -1,8 +1,14 @@
 #pragma once
 
+#include "res_bfresanimcurve.hpp"
+#include "res_gfxcommon.hpp"
+#include "res_nintendowaredictionary.hpp"
+#include "res_bfresskeleton.hpp"
+#include "../usefulFunctions/usefulStructs.h"
+
 namespace vp::res {
 
-    enum class BfresBoneAnimCurveType : u16 {
+    enum class BfresBoneAnimCurveType : uint16_t {
         ScaleX      = (1 << 0),
         ScaleY      = (1 << 1),
         ScaleZ      = (1 << 2),
@@ -28,48 +34,48 @@ namespace vp::res {
         ResBfresBoneAnimResultDefault *default_result;
         ResGfxUserData                *user_data_array;
         ResNintendoWareDictionary     *user_data_dictionary;
-        u32                            reserve0            : 3;
-        u32                            is_use_scale        : 1;
-        u32                            is_use_rotation     : 1;
-        u32                            is_use_translation  : 1;
-        u32                            curve_type          : 10;
-        u32                            reserve1            : 5;
-        u32                            transform_mode      : 5;
-        u32                            reserve2            : 6;
-        u8                             reserve3;
-        u8                             reserve4;
-        u8                             anim_curve_count;
-        u8                             reserve5;
-        u32                            base_curve_index;
-        u16                            user_data_count;
-        u16                            reserve6;
+        uint32_t                            reserve0            : 3;
+        uint32_t                            is_use_scale        : 1;
+        uint32_t                            is_use_rotation     : 1;
+        uint32_t                            is_use_translation  : 1;
+        uint32_t                            curve_type          : 10;
+        uint32_t                            reserve1            : 5;
+        uint32_t                            transform_mode      : 5;
+        uint32_t                            reserve2            : 6;
+        uint8_t                             reserve3;
+        uint8_t                             reserve4;
+        uint8_t                             anim_curve_count;
+        uint8_t                             reserve5;
+        uint32_t                            base_curve_index;
+        uint16_t                            user_data_count;
+        uint16_t                            reserve6;
     };
     static_assert(sizeof(ResBfresBoneAnim) == 0x38);
 
     struct ResBfresSkeletalAnim {
-        u32                        magic;
-        u32                        is_baked       : 1;
-        u32                        reserve0       : 1;
-        u32                        is_looping     : 1;
-        u32                        reserve1       : 5;
-        u32                        scale_mode     : 2;
-        u32                        reserve2       : 2;
-        u32                        rotation_mode  : 1;
-        u32                        reserve3       : 19;
+        uint32_t                        magic;
+        uint32_t                        is_baked       : 1;
+        uint32_t                        reserve0       : 1;
+        uint32_t                        is_looping     : 1;
+        uint32_t                        reserve1       : 5;
+        uint32_t                        scale_mode     : 2;
+        uint32_t                        reserve2       : 2;
+        uint32_t                        rotation_mode  : 1;
+        uint32_t                        reserve3       : 19;
         const char                *animation_name;
         const char                *reserve4;
         ResBfresSkeleton          *user_bound_skeleton;
-        u16                       *bind_table;
+        uint16_t                       *bind_table;
         ResBfresBoneAnim          *bone_anim_array;
         ResGfxUserData            *user_data_array;
         ResNintendoWareDictionary *user_data_dictionary;
-        u32                        frame_count;
-        u32                        total_anim_curves;
-        u32                        baked_size;
-        u16                        bone_anim_count;
-        u16                        user_data_count;
+        uint32_t                        frame_count;
+        uint32_t                        total_anim_curves;
+        uint32_t                        baked_size;
+        uint16_t                        bone_anim_count;
+        uint16_t                        user_data_count;
 
-        static constexpr u32 cMagic = util::TCharCode32("FSKA");
+        static constexpr uint32_t cMagic = 0x46534B41;
     };
     static_assert(sizeof(ResBfresSkeletalAnim) == 0x50);
 }

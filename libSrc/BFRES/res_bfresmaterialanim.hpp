@@ -1,26 +1,33 @@
 #pragma once
 
+#include <cstdint>
+#include "res_bfresanimcurve.hpp"
+#include "res_gfxcommon.hpp"
+#include "res_nintendowaredictionary.hpp"
+#include "res_bfresmodel.hpp"
+
+
 namespace vp::res {
 
     struct ResBfresShaderParamAnim {
         const char *shader_param_name;
-        u16         base_curve;
-        u16         float_curve_count;
-        u16         int_curve_count;
-        u16         base_constant;
-        u16         constant_count;
-        u16         material_sub_shader_param_index;
-        u32         reserve0;
+        uint16_t         base_curve;
+        uint16_t         float_curve_count;
+        uint16_t         int_curve_count;
+        uint16_t         base_constant;
+        uint16_t         constant_count;
+        uint16_t         material_sub_shader_param_index;
+        uint32_t         reserve0;
     };
     static_assert(sizeof(ResBfresShaderParamAnim) == 0x18);
 
     struct ResBfresTexturePatternAnim {
         const char *texture_name;
-        u16         base_curve;
-        u16         base_constant;
-        u8          material_sub_sampler_index;
-        u8          reserve0;
-        u16         reserve1;
+        uint16_t         base_curve;
+        uint16_t         base_constant;
+        uint8_t          material_sub_sampler_index;
+        uint8_t          reserve0;
+        uint16_t         reserve1;
     };
     static_assert(sizeof(ResBfresTexturePatternAnim) == 0x10);
 
@@ -30,51 +37,51 @@ namespace vp::res {
         ResBfresTexturePatternAnim *texture_pattern_anim_array;
         ResBfresAnimCurve          *anim_curve_array;
         void                       *constant_array;
-        u16                         base_shader_param_curve_index;
-        u16                         base_texture_pattern_curve_index;
-        u16                         base_visibility_curve_index;
-        u16                         visibility_curve_index;
-        u16                         visibility_constant_index;
-        u16                         shader_param_anim_count;
-        u16                         texture_pattern_anim_count;
-        u16                         constant_count;
-        u16                         anim_curve_count;
-        u16                         reserve0;
-        u32                         reserve1;
+        uint16_t                         base_shader_param_curve_index;
+        uint16_t                         base_texture_pattern_curve_index;
+        uint16_t                         base_visibility_curve_index;
+        uint16_t                         visibility_curve_index;
+        uint16_t                         visibility_constant_index;
+        uint16_t                         shader_param_anim_count;
+        uint16_t                         texture_pattern_anim_count;
+        uint16_t                         constant_count;
+        uint16_t                         anim_curve_count;
+        uint16_t                         reserve0;
+        uint32_t                         reserve1;
     };
     static_assert(sizeof(ResBfresMaterialAnimData) == 0x40);
 
     struct ResBfresMaterialAnim  {
-        u32                         magic;
-        u32                         is_baked        : 1;
-        u32                         reserve0        : 1;
-        u32                         is_looping      : 1;
-        u32                         reserve1        : 29;
+        uint32_t                         magic;
+        uint32_t                         is_baked        : 1;
+        uint32_t                         reserve0        : 1;
+        uint32_t                         is_looping      : 1;
+        uint32_t                         reserve1        : 29;
         const char                 *animation_name;
         const char                 *reserve2;
         ResBfresModel              *user_bound_model;
-        u16                        *bind_table;
+        uint16_t                        *bind_table;
         ResBfresMaterialAnimData   *material_anim_data_array;
         void                      **user_texture_view_array;
         const char                **texture_name_array;
         ResGfxUserData             *user_data_array;
         ResNintendoWareDictionary  *user_data_dictionary;
-        u64                        *user_texture_descriptor_slot_array;
-        u32                         frame_count;
-        u32                         bake_size;
-        u16                         user_data_count;
-        u16                         per_material_anim_count;
-        u16                         total_anim_curves;
-        u16                         shader_param_anim_count;
-        u16                         texture_pattern_anim_count;
-        u16                         material_visibility_anim_count;
-        u16                         texture_count;
-        u16                         reserve3;
+        uint64_t                        *user_texture_descriptor_slot_array;
+        uint32_t                         frame_count;
+        uint32_t                         bake_size;
+        uint16_t                         user_data_count;
+        uint16_t                         per_material_anim_count;
+        uint16_t                         total_anim_curves;
+        uint16_t                         shader_param_anim_count;
+        uint16_t                         texture_pattern_anim_count;
+        uint16_t                         material_visibility_anim_count;
+        uint16_t                         texture_count;
+        uint16_t                         reserve3;
 
-        static constexpr u32 cMagic = util::TCharCode32("FMAA");
+        static constexpr uint32_t cMagic = 0x464D4141;
 
         void BindTexture(GfxBindTextureCallback bind_callback, ResBntx *res_bntx) {
-            for (u32 i = 0; i < texture_count; ++i) {
+            for (uint32_t i = 0; i < texture_count; ++i) {
                 if (user_texture_view_array[i] != nullptr && user_texture_descriptor_slot_array[i] != 0xffff'ffff'ffff'ffff) { continue; }
         
                 GfxBindTextureReturn ret       = (bind_callback)(res_bntx, texture_name_array[i] + 2);

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "res_gfxcommon.hpp"
+
 namespace vp::res {
 
     constexpr inline const char *GfxWrapModeToString(GfxWrapMode wrap_mode) {

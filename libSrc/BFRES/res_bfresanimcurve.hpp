@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 namespace vp::res {
 
     enum class BfresAnimCurveFrameDataType {
@@ -32,31 +34,31 @@ namespace vp::res {
     struct ResBfresAnimCurve {
         union {
             float *frame_array_f32;
-            s16   *frame_array_f16;
-            u8    *frame_array_u8;
+            int16_t   *frame_array_f16;
+            uint8_t    *frame_array_u8;
         };
         union {
             float *value_array_f32;
-            s32   *value_array_s32;
-            s16   *value_array_s16;
-            s8    *value_array_s8;
+            int32_t   *value_array_s32;
+            int16_t   *value_array_s16;
+            int8_t    *value_array_s8;
         };
-        u16   frame_data_type : 2;
-        u16   value_data_type : 2;
-        u16   curve_type      : 3;
-        u16   reserve0        : 1;
-        u16   pre_wrap_mode   : 2;
-        u16   reserve1        : 2;
-        u16   post_wrap_mode  : 2;
-        u16   reserve2        : 2;
-        u16   frame_count;
-        u32   base_value;
+        uint16_t   frame_data_type : 2;
+        uint16_t   value_data_type : 2;
+        uint16_t   curve_type      : 3;
+        uint16_t   reserve0        : 1;
+        uint16_t   pre_wrap_mode   : 2;
+        uint16_t   reserve1        : 2;
+        uint16_t   post_wrap_mode  : 2;
+        uint16_t   reserve2        : 2;
+        uint16_t   frame_count;
+        uint32_t   base_value;
         float start_key;
         float end_key;
         float frame_data_scale;
         float frame_data_add;
         float frame_delta;
-        u32   reserve3;
+        uint32_t   reserve3;
     };
     static_assert(sizeof(ResBfresAnimCurve) == 0x30);
 }

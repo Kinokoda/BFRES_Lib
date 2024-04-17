@@ -1,12 +1,14 @@
 #pragma once
 
+#include <cstdint>
+
 namespace vp::res {
     
     struct ResNintendoWareStringPool {
-        u32   magic;
-        u32   reserve0;
-        void *reserve1;
-        u32   string_count;
-        u32   empty_string;
+        uint32_t   magic;
+        uint32_t   reserve0;
+        void      *reserve1;
+        uint32_t   string_count;
+        uint32_t   empty_string;
     };
 }

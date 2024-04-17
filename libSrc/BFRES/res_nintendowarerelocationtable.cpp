@@ -1,4 +1,7 @@
-#include <vp.hpp>
+//#include <vp.hpp>
+#include <cstdint>
+#include <cstdio>
+#include "res_nintendowarerelocationtable.h"
 
 namespace vp::res {
 
@@ -21,15 +24,15 @@ namespace vp::res {
         const size_t entry_table_offset = this->GetEntryTableOffset();
 
         /* Iterate each section */
-        for(u32 i = 0; i < section_count; ++i) {
+        for(uint32_t i = 0; i < section_count; ++i) {
 
             /* Get section and calculate file base */
             ResSection *section = this->GetSection(i);
             uintptr_t file_base = (section->base_pointer == nullptr) ? base_file : reinterpret_cast<uintptr_t>(section->base_pointer) - section->region_offset;
 
             /* Relocate entries */
-            u32 entry_count = section->entry_count;
-            for(u32 entry_index = section->base_entry_index; entry_index < entry_count + section->base_entry_index; ++entry_index) {
+            uint32_t entry_count = section->entry_count;
+            for(uint32_t entry_index = section->base_entry_index; entry_index < entry_count + section->base_entry_index; ++entry_index) {
 
                 /* Calculate entry offset */
                 const size_t entry_offset = entry_table_offset + entry_index * sizeof(ResEntry);
@@ -39,14 +42,14 @@ namespace vp::res {
                 uintptr_t region_offset = base_file + entry->region_offset;
 
                 /* Relocate */
-                const u8 offset_count = entry->relocation_count;
-                const u8 offset_mask = offset_count & 3;
-                for(u32 array_index = 0; array_index < entry->array_count; ++array_index) {
+                const uint8_t offset_count = entry->relocation_count;
+                const uint8_t offset_mask = offset_count & 3;
+                for(uint32_t array_index = 0; array_index < entry->array_count; ++array_index) {
 
                     /* Quadruple method */
                     uintptr_t region_offset_iter = region_offset;
                     if (3 < offset_count) {
-                        for(s32 offset_index = offset_mask - offset_count; offset_index < 0; offset_index = offset_index + 4) {
+                        for(int32_t offset_index = offset_mask - offset_count; offset_index < 0; offset_index = offset_index + 4) {
 
                             /* Calculate and set pointer in file (x4) */
                             size_t relocation_pointer = (region_offset_iter != 0) ? reinterpret_cast<size_t>(file_base + region_offset_iter) : 0;
@@ -67,7 +70,7 @@ namespace vp::res {
                         }
                     }
                     if (offset_mask != 0) {
-                        for(s32 offset_index = -offset_mask; offset_index < 0; ++offset_index) {
+                        for(int32_t offset_index = -offset_mask; offset_index < 0; ++offset_index) {
 
                             /* Calculate and set pointer in file */
                             size_t relocation_pointer = (region_offset_iter != 0) ? reinterpret_cast<size_t>(file_base + region_offset_iter) : 0;
@@ -103,15 +106,15 @@ namespace vp::res {
         const size_t entry_table_offset = this->GetEntryTableOffset();
 
         /* Iterate each section */
-        for(u32 i = 0; i < section_count; ++i) {
+        for(uint32_t i = 0; i < section_count; ++i) {
 
             /* Get section and calculate file base */
             ResSection *section = this->GetSection(i);
             uintptr_t file_base = (section->base_pointer == nullptr) ? base_file : reinterpret_cast<uintptr_t>(section->base_pointer) - section->region_offset;
 
             /* Relocate entries */
-            u32 entry_count = section->entry_count;
-            for(u32 entry_index = section->base_entry_index; entry_index < entry_count + section->base_entry_index; ++entry_index) {
+            uint32_t entry_count = section->entry_count;
+            for(uint32_t entry_index = section->base_entry_index; entry_index < entry_count + section->base_entry_index; ++entry_index) {
 
                 /* Calculate entry offset */
                 const size_t entry_offset = entry_table_offset + entry_index * sizeof(ResEntry);
@@ -121,14 +124,14 @@ namespace vp::res {
                 uintptr_t region_offset = base_file + entry->region_offset;
 
                 /* Relocate */
-                const u8 offset_count = entry->relocation_count;
-                const u8 offset_mask = offset_count & 3;
-                for(u32 array_index = 0; array_index < entry->array_count; ++array_index) {
+                const uint8_t offset_count = entry->relocation_count;
+                const uint8_t offset_mask = offset_count & 3;
+                for(uint32_t array_index = 0; array_index < entry->array_count; ++array_index) {
 
                     /* Quadruple method */
                     uintptr_t region_offset_iter = region_offset;
                     if (3 < offset_count) {
-                        for(s32 offset_index = offset_mask - offset_count; offset_index < 0; offset_index = offset_index + 4) {
+                        for(int32_t offset_index = offset_mask - offset_count; offset_index < 0; offset_index = offset_index + 4) {
 
                             /* Calculate and set pointer in file (x4) */
                             size_t relocation_pointer = (region_offset_iter != 0) ? reinterpret_cast<size_t>(region_offset_iter - file_base) : 0;
@@ -149,7 +152,7 @@ namespace vp::res {
                         }
                     }
                     if (offset_mask != 0) {
-                        for(s32 offset_index = -offset_mask; offset_index < 0; ++offset_index) {
+                        for(int32_t offset_index = -offset_mask; offset_index < 0; ++offset_index) {
 
                             /* Calculate and set pointer in file */
                             size_t relocation_pointer = (region_offset_iter != 0) ? reinterpret_cast<size_t>(region_offset_iter - file_base) : 0;
@@ -165,7 +168,7 @@ namespace vp::res {
         }
 
         /* Clear relocation guard */
-        file_header->SetRelocated(false);
+        file_header -> SetRelocated(false);
 
         return;
     }

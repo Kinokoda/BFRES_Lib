@@ -1,15 +1,26 @@
 #pragma once
 
+#include "res_nintendowaredictionary.hpp"
+#include "res_bfresmodel.hpp"
+#include "res_bfresskeletalanim.hpp"
+#include "res_bfresmaterialanim.hpp"
+#include "res_bfresbonevisibilityanim.hpp"
+#include "res_bfresshapeanim.hpp"
+#include "res_nintendowarefileheader.hpp"
+#include "res_gfxcommon.hpp"
+#include "res_bfressceneanim.hpp"
+
+
 namespace vp::res {
 
     struct ResBfres : public ResNintendoWareFileHeader {
         const char                 *fres_name;
         ResBfresModel              *model_array;
         ResNintendoWareDictionary  *model_dictionary;
-        u64                         reserve0;
-        u64                         reserve1;
-        u64                         reserve2;
-        u64                         reserve3;
+        uint64_t                         reserve0;
+        uint64_t                         reserve1;
+        uint64_t                         reserve2;
+        uint64_t                         reserve3;
         ResBfresSkeletalAnim       *skeletal_anim_array;
         ResNintendoWareDictionary  *skeletal_anim_dictionary;
         ResBfresMaterialAnim       *material_anim_array;
@@ -26,29 +37,29 @@ namespace vp::res {
         ResNintendoWareDictionary  *embed_file_dictionary;
         void                       *user_pointer;
         const char                 *reserve4;
-        u32                         reserve5;
-        u16                         model_count;
-        u16                         reserve6;
-        u16                         reserve7;
-        u16                         skeletal_anim_count;
-        u16                         material_anim_count;
-        u16                         bone_visibility_anim_count;
-        u16                         shape_anim_count;
-        u16                         scene_anim_count;
-        u16                         embed_file_count;
+        uint32_t                         reserve5;
+        uint16_t                         model_count;
+        uint16_t                         reserve6;
+        uint16_t                         reserve7;
+        uint16_t                         skeletal_anim_count;
+        uint16_t                         material_anim_count;
+        uint16_t                         bone_visibility_anim_count;
+        uint16_t                         shape_anim_count;
+        uint16_t                         scene_anim_count;
+        uint16_t                         embed_file_count;
         union {
-            u8                      external_options;
+            uint8_t                      external_options;
             struct {
-                u8                  is_external_model_uninitalized : 1;
-                u8                  has_external_strings           : 1;
-                u8                  holds_external_strings         : 1;
-                u8                  is_external_gpu_region         : 1;
-                u8                  reserve9                       : 4;
+                uint8_t                  is_external_model_uninitalized : 1;
+                uint8_t                  has_external_strings           : 1;
+                uint8_t                  holds_external_strings         : 1;
+                uint8_t                  is_external_gpu_region         : 1;
+                uint8_t                  reserve9                       : 4;
             };
         };
-        u8                          reserve10;
+        uint8_t                          reserve10;
 
-        static constexpr u64 cMagic = util::TCharCode64("FRES    ");
+        static constexpr uint64_t cMagic = 0x4652455320202020;
 
         static ResBfres *ResCast(void *file) {
             ResBfres *fres = reinterpret_cast<ResBfres*>(file);
@@ -63,19 +74,19 @@ namespace vp::res {
         }
         
         void BindTextures(GfxBindTextureCallback bind_callback, ResBntx *res_bntx) {
-            for (u32 i = 0; i < model_count; ++i) {
+            for (uint32_t i = 0; i < model_count; ++i) {
                 model_array[i].BindTexture(bind_callback, res_bntx);
             }
-            for (u32 i = 0; i < material_anim_count; ++i) {
+            for (uint32_t i = 0; i < material_anim_count; ++i) {
                 material_anim_array[i].BindTexture(bind_callback, res_bntx);
             }
         }
 
-        constexpr ALWAYS_INLINE u64 GetGpuMemorySize() {
+        constexpr inline uint64_t GetGpuMemorySize() {
             return (memory_pool_info == nullptr) ? 0xffff'ffff'ffff'ffff : memory_pool_info->size;
         }
 
-        constexpr ALWAYS_INLINE void *GetGpuMemoryRegion() {
+        constexpr inline void *GetGpuMemoryRegion() {
             return (memory_pool_info == nullptr) ? nullptr : memory_pool_info->storage;
         }
     };
