@@ -41,8 +41,7 @@ namespace vp::res {
         static constexpr uint32_t cMagic = 0x464D444C;
 
         void BindTexture(GfxBindTextureCallback bind_callback, ResBntx *res_bntx) {
-            const uint32_t mat_count = material_count;
-            for (uint32_t i = 0; i < mat_count; ++i) {
+            for (uint32_t i = 0; i < material_count; ++i) {
                 material_array[i].BindTexture(bind_callback, res_bntx);
             }
         }

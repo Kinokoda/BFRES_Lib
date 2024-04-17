@@ -33,12 +33,12 @@ namespace vp::res {
 
     struct ResBfresAnimCurve {
         union {
-            float *frame_array_f32;
-            int16_t   *frame_array_f16;
+            float      *frame_array_f32;
+            int16_t    *frame_array_f16;
             uint8_t    *frame_array_u8;
         };
         union {
-            float *value_array_f32;
+            float     *value_array_f32;
             int32_t   *value_array_s32;
             int16_t   *value_array_s16;
             int8_t    *value_array_s8;
@@ -62,3 +62,4 @@ namespace vp::res {
     };
     static_assert(sizeof(ResBfresAnimCurve) == 0x30);
 }
+

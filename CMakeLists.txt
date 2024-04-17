@@ -23,6 +23,7 @@ add_library(BFRES_Lib STATIC
         libSrc/BFRES/res_nintendowarerelocationtable.h
         libSrc/BFRES/res_nintendowarestringpool.hpp
         libSrc/usefulFunctions/usefulStructs.h
+        libSrc/usefulFunctions/fresMagicTouint64_t.h
         #libSrc/BFRES/BFRES.cpp
         #libSrc/BFRES/BFRES.h
         #libSrc/BFRES/subFRES/header/Header.cpp

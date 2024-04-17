@@ -37,33 +37,33 @@ namespace vp::res {
         ResNintendoWareDictionary  *embed_file_dictionary;
         void                       *user_pointer;
         const char                 *reserve4;
-        uint32_t                         reserve5;
-        uint16_t                         model_count;
-        uint16_t                         reserve6;
-        uint16_t                         reserve7;
-        uint16_t                         skeletal_anim_count;
-        uint16_t                         material_anim_count;
-        uint16_t                         bone_visibility_anim_count;
-        uint16_t                         shape_anim_count;
-        uint16_t                         scene_anim_count;
-        uint16_t                         embed_file_count;
+        uint32_t                   reserve5;
+        uint16_t                   model_count;
+        uint16_t                   reserve6;
+        uint16_t                   reserve7;
+        uint16_t                   skeletal_anim_count;
+        uint16_t                   material_anim_count;
+        uint16_t                   bone_visibility_anim_count;
+        uint16_t                   shape_anim_count;
+        uint16_t                   scene_anim_count;
+        uint16_t                   embed_file_count;
         union {
-            uint8_t                      external_options;
+            uint8_t                external_options;
             struct {
-                uint8_t                  is_external_model_uninitalized : 1;
-                uint8_t                  has_external_strings           : 1;
-                uint8_t                  holds_external_strings         : 1;
-                uint8_t                  is_external_gpu_region         : 1;
-                uint8_t                  reserve9                       : 4;
+                uint8_t            is_external_model_uninitalized : 1;
+                uint8_t            has_external_strings           : 1;
+                uint8_t            holds_external_strings         : 1;
+                uint8_t            is_external_gpu_region         : 1;
+                uint8_t            reserve9                       : 4;
             };
         };
-        uint8_t                          reserve10;
+        uint8_t                    reserve10;
 
         static constexpr uint64_t cMagic = 0x4652455320202020;
 
         static ResBfres *ResCast(void *file) {
             ResBfres *fres = reinterpret_cast<ResBfres*>(file);
-            if (fres == nullptr || fres->ResNintendoWareFileHeader::IsValid(cMagic, 10, 0) == false) { return nullptr; }
+            if (fres == nullptr || !fres->ResNintendoWareFileHeader::IsValid(cMagic, 10, 0)) { return nullptr; }
             fres->Relocate();
             return fres;
         }

@@ -2,7 +2,7 @@
 // Created by kino on 4/12/24.
 //
 
-
+#include "../libSrc/BFRES/res_bfres.hpp"
 #include "main.h"
 
 
