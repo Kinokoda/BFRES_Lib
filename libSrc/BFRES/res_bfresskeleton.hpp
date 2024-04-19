@@ -83,12 +83,12 @@ namespace vp::res {
         uint32_t                        scale_mode       : 2;
         uint32_t                        reserve1         : 2;
         uint32_t                        rotation_mode    : 2;
-        ResNintendoWareDictionary *bone_dictionary;
-        ResBfresBone              *bone_array;
-        uint16_t                       *bone_index_table;
-        util::Matrix34f           *inverse_transformation_matrix_array;
-        void                      *user_pointer;
-        uint16_t                       *mirrored_bone_index_table;
+        ResNintendoWareDictionary       *bone_dictionary;
+        ResBfresBone                    *bone_array;
+        uint16_t                        *bone_index_table;
+        util::Matrix34f                 *inverse_transformation_matrix_array;
+        void                            *user_pointer;
+        uint16_t                        *mirrored_bone_index_table;
         uint16_t                        bone_count;
         uint16_t                        smooth_bone_count;
         uint16_t                        rigid_bone_count;

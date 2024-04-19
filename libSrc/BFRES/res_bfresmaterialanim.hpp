@@ -6,6 +6,9 @@
 #include "res_nintendowaredictionary.hpp"
 #include "res_bfresmodel.hpp"
 
+namespace vp::res {
+    struct ResBfresModel;  // Forward declaration
+}
 
 namespace vp::res {
 
@@ -32,11 +35,11 @@ namespace vp::res {
     static_assert(sizeof(ResBfresTexturePatternAnim) == 0x10);
 
     struct ResBfresMaterialAnimData {
-        const char                 *model_name;
-        ResBfresShaderParamAnim    *shader_param_anim_array;
-        ResBfresTexturePatternAnim *texture_pattern_anim_array;
-        ResBfresAnimCurve          *anim_curve_array;
-        void                       *constant_array;
+        const char                       *model_name;
+        ResBfresShaderParamAnim          *shader_param_anim_array;
+        ResBfresTexturePatternAnim       *texture_pattern_anim_array;
+        ResBfresAnimCurve                *anim_curve_array;
+        void                             *constant_array;
         uint16_t                         base_shader_param_curve_index;
         uint16_t                         base_texture_pattern_curve_index;
         uint16_t                         base_visibility_curve_index;
@@ -57,16 +60,16 @@ namespace vp::res {
         uint32_t                         reserve0        : 1;
         uint32_t                         is_looping      : 1;
         uint32_t                         reserve1        : 29;
-        const char                 *animation_name;
-        const char                 *reserve2;
-        ResBfresModel              *user_bound_model;
-        uint16_t                        *bind_table;
-        ResBfresMaterialAnimData   *material_anim_data_array;
-        void                      **user_texture_view_array;
-        const char                **texture_name_array;
-        ResGfxUserData             *user_data_array;
-        ResNintendoWareDictionary  *user_data_dictionary;
-        uint64_t                        *user_texture_descriptor_slot_array;
+        const char                       *animation_name;
+        const char                       *reserve2;
+        ResBfresModel                    *user_bound_model;
+        uint16_t                         *bind_table;
+        ResBfresMaterialAnimData         *material_anim_data_array;
+        void                             **user_texture_view_array;
+        const char                       **texture_name_array;
+        ResGfxUserData                   *user_data_array;
+        ResNintendoWareDictionary        *user_data_dictionary;
+        uint64_t                         *user_texture_descriptor_slot_array;
         uint32_t                         frame_count;
         uint32_t                         bake_size;
         uint16_t                         user_data_count;

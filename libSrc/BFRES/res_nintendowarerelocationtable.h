@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 namespace vp::res {
 
     struct ResNintendoWareFileHeader;
@@ -49,7 +51,7 @@ namespace vp::res {
 
         void SetSignature() { magic = Magic; }
 
-        //void Relocate();
+        void Relocate();
         void Unrelocate();
 	};
 }

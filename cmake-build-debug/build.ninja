@@ -41,6 +41,61 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/kino/CLionProjects/BFRES-Lib/cmake-build-debug/
 # =============================================================================
+# Object build statements for STATIC_LIBRARY target BFRES_Lib_Old
+
+
+#############################################
+# Order-only phony target for BFRES_Lib_Old
+
+build cmake_object_order_depends_target_BFRES_Lib_Old: phony || CMakeFiles/BFRES_Lib_Old.dir
+
+build CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/BFRES.cpp.o: CXX_COMPILER__BFRES_Lib_Old_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/Unused/BFRES/BFRES.cpp || cmake_object_order_depends_target_BFRES_Lib_Old
+  DEP_FILE = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/BFRES.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/BFRES_Lib_Old.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES
+
+build CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header/Header.cpp.o: CXX_COMPILER__BFRES_Lib_Old_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/Unused/BFRES/subFRES/header/Header.cpp || cmake_object_order_depends_target_BFRES_Lib_Old
+  DEP_FILE = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header/Header.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/BFRES_Lib_Old.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header
+
+build CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header/ModernHeader.cpp.o: CXX_COMPILER__BFRES_Lib_Old_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/Unused/BFRES/subFRES/header/ModernHeader.cpp || cmake_object_order_depends_target_BFRES_Lib_Old
+  DEP_FILE = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header/ModernHeader.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/BFRES_Lib_Old.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header
+
+build CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header/LegacyHeader.cpp.o: CXX_COMPILER__BFRES_Lib_Old_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/Unused/BFRES/subFRES/header/LegacyHeader.cpp || cmake_object_order_depends_target_BFRES_Lib_Old
+  DEP_FILE = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header/LegacyHeader.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/BFRES_Lib_Old.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header
+
+build CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/FMDL/FMDL.cpp.o: CXX_COMPILER__BFRES_Lib_Old_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/Unused/BFRES/subFRES/FMDL/FMDL.cpp || cmake_object_order_depends_target_BFRES_Lib_Old
+  DEP_FILE = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/FMDL/FMDL.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/BFRES_Lib_Old.dir
+  OBJECT_FILE_DIR = CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/FMDL
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target BFRES_Lib_Old
+
+
+#############################################
+# Link the static library libBFRES_Lib_Old.a
+
+build libBFRES_Lib_Old.a: CXX_STATIC_LIBRARY_LINKER__BFRES_Lib_Old_Debug CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/BFRES.cpp.o CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header/Header.cpp.o CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header/ModernHeader.cpp.o CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/header/LegacyHeader.cpp.o CMakeFiles/BFRES_Lib_Old.dir/libSrc/Unused/BFRES/subFRES/FMDL/FMDL.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/BFRES_Lib_Old.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = libBFRES_Lib_Old.a
+  TARGET_PDB = BFRES_Lib_Old.a.dbg
+
+# =============================================================================
 # Object build statements for STATIC_LIBRARY target BFRES_Lib
 
 
@@ -72,13 +127,50 @@ build libBFRES_Lib.a: CXX_STATIC_LIBRARY_LINKER__BFRES_Lib_Debug CMakeFiles/BFRE
   TARGET_PDB = BFRES_Lib.a.dbg
 
 # =============================================================================
+# Object build statements for STATIC_LIBRARY target fileOps
+
+
+#############################################
+# Order-only phony target for fileOps
+
+build cmake_object_order_depends_target_fileOps: phony || CMakeFiles/fileOps.dir
+
+build CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o: CXX_COMPILER__fileOps_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/usefulFunctions/fileOps.cpp || cmake_object_order_depends_target_fileOps
+  DEP_FILE = CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/fileOps.dir
+  OBJECT_FILE_DIR = CMakeFiles/fileOps.dir/libSrc/usefulFunctions
+
+build CMakeFiles/fileOps.dir/libSrc/usefulFunctions/UintReader.cpp.o: CXX_COMPILER__fileOps_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/libSrc/usefulFunctions/UintReader.cpp || cmake_object_order_depends_target_fileOps
+  DEP_FILE = CMakeFiles/fileOps.dir/libSrc/usefulFunctions/UintReader.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/fileOps.dir
+  OBJECT_FILE_DIR = CMakeFiles/fileOps.dir/libSrc/usefulFunctions
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target fileOps
+
+
+#############################################
+# Link the static library libfileOps.a
+
+build libfileOps.a: CXX_STATIC_LIBRARY_LINKER__fileOps_Debug CMakeFiles/fileOps.dir/libSrc/usefulFunctions/fileOps.cpp.o CMakeFiles/fileOps.dir/libSrc/usefulFunctions/UintReader.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/fileOps.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = libfileOps.a
+  TARGET_PDB = fileOps.a.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target BFRES_Lib_Test
 
 
 #############################################
 # Order-only phony target for BFRES_Lib_Test
 
-build cmake_object_order_depends_target_BFRES_Lib_Test: phony || cmake_object_order_depends_target_BFRES_Lib
+build cmake_object_order_depends_target_BFRES_Lib_Test: phony || cmake_object_order_depends_target_BFRES_Lib cmake_object_order_depends_target_fileOps
 
 build CMakeFiles/BFRES_Lib_Test.dir/testSrc/main.cpp.o: CXX_COMPILER__BFRES_Lib_Test_unscanned_Debug /home/kino/CLionProjects/BFRES-Lib/testSrc/main.cpp || cmake_object_order_depends_target_BFRES_Lib_Test
   DEP_FILE = CMakeFiles/BFRES_Lib_Test.dir/testSrc/main.cpp.o.d
@@ -94,9 +186,9 @@ build CMakeFiles/BFRES_Lib_Test.dir/testSrc/main.cpp.o: CXX_COMPILER__BFRES_Lib_
 #############################################
 # Link the executable BFRES_Lib_Test
 
-build BFRES_Lib_Test: CXX_EXECUTABLE_LINKER__BFRES_Lib_Test_Debug CMakeFiles/BFRES_Lib_Test.dir/testSrc/main.cpp.o | libBFRES_Lib.a || libBFRES_Lib.a
+build BFRES_Lib_Test: CXX_EXECUTABLE_LINKER__BFRES_Lib_Test_Debug CMakeFiles/BFRES_Lib_Test.dir/testSrc/main.cpp.o | libBFRES_Lib.a libfileOps.a || libBFRES_Lib.a libfileOps.a
   FLAGS = -g
-  LINK_LIBRARIES = libBFRES_Lib.a
+  LINK_LIBRARIES = libBFRES_Lib.a  libfileOps.a
   OBJECT_DIR = CMakeFiles/BFRES_Lib_Test.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -131,6 +223,10 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build BFRES_Lib: phony libBFRES_Lib.a
 
+build BFRES_Lib_Old: phony libBFRES_Lib_Old.a
+
+build fileOps: phony libfileOps.a
+
 # =============================================================================
 # Folder targets.
 
@@ -139,7 +235,7 @@ build BFRES_Lib: phony libBFRES_Lib.a
 #############################################
 # Folder: /home/kino/CLionProjects/BFRES-Lib/cmake-build-debug
 
-build all: phony libBFRES_Lib.a BFRES_Lib_Test
+build all: phony libBFRES_Lib_Old.a libBFRES_Lib.a libfileOps.a BFRES_Lib_Test
 
 # =============================================================================
 # Built-in targets

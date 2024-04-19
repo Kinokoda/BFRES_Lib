@@ -11,7 +11,6 @@
 #include <iostream>
 #include <array>
 
-using Bytes = std::vector<std::byte>;
 
 class fileOps {
 private:

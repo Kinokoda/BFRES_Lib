@@ -3,6 +3,19 @@ project(BFRES_Lib VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_library(BFRES_Lib_Old STATIC
+        libSrc/Unused/BFRES/BFRES.cpp
+        libSrc/Unused/BFRES/BFRES.h
+        libSrc/Unused/BFRES/subFRES/header/Header.cpp
+        libSrc/Unused/BFRES/subFRES/header/Header.h
+        libSrc/Unused/BFRES/subFRES/header/ModernHeader.cpp
+        libSrc/Unused/BFRES/subFRES/header/ModernHeader.h
+        libSrc/Unused/BFRES/subFRES/header/LegacyHeader.cpp
+        libSrc/Unused/BFRES/subFRES/header/LegacyHeader.h
+        libSrc/Unused/BFRES/subFRES/FMDL/FMDL.cpp
+        libSrc/Unused/BFRES/subFRES/FMDL/FMDL.h
+)
+
 add_library(BFRES_Lib STATIC
         libSrc/BFRES/res_bfres.hpp
         libSrc/BFRES/res_bfresanimcurve.hpp
@@ -24,25 +37,14 @@ add_library(BFRES_Lib STATIC
         libSrc/BFRES/res_nintendowarestringpool.hpp
         libSrc/usefulFunctions/usefulStructs.h
         libSrc/usefulFunctions/fresMagicTouint64_t.h
-        #libSrc/BFRES/BFRES.cpp
-        #libSrc/BFRES/BFRES.h
-        #libSrc/BFRES/subFRES/header/Header.cpp
-        #libSrc/BFRES/subFRES/header/Header.h
-        #libSrc/BFRES/subFRES/header/ModernHeader.cpp
-        #libSrc/BFRES/subFRES/header/ModernHeader.h
-        #libSrc/BFRES/subFRES/header/LegacyHeader.cpp
-        #libSrc/BFRES/subFRES/header/LegacyHeader.h
-        #libSrc/BFRES/subFRES/FMDL/FMDL.cpp
-        #libSrc/BFRES/subFRES/FMDL/FMDL.h
-
 )
 
-#add_library(fileOps STATIC
-        #libSrc/usefulFunctions/fileOps.cpp
-        #libSrc/usefulFunctions/fileOps.h
-        #libSrc/usefulFunctions/UintReader.cpp
-        #libSrc/usefulFunctions/UintReader.h
-#)
+add_library(fileOps STATIC
+        libSrc/usefulFunctions/fileOps.cpp
+        libSrc/usefulFunctions/fileOps.h
+        libSrc/usefulFunctions/UintReader.cpp
+        libSrc/usefulFunctions/UintReader.h
+)
 
 add_executable(BFRES_Lib_Test
         testSrc/main.h
@@ -50,4 +52,4 @@ add_executable(BFRES_Lib_Test
 )
 
 target_link_libraries(BFRES_Lib_Test BFRES_Lib)
-#target_link_libraries(BFRES_Lib_Test fileOps)
+target_link_libraries(BFRES_Lib_Test fileOps)

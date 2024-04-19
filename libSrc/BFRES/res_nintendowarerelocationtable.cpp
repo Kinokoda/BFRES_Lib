@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <cstdio>
 #include "res_nintendowarerelocationtable.h"
+#include "res_nintendowarefileheader.hpp"
 
 namespace vp::res {
 

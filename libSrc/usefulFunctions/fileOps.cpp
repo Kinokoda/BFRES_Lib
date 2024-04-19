@@ -30,6 +30,5 @@ void fileOps::readFile(const std::string& filePath) {
         file.seekg(0, std::ios::beg);
         file.read(data, size);
         file.close();
-        //std::cout << "File Magic: " << data << std::endl;
     }
 }
